@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Data.OleDb;
 
 namespace mine
 {
@@ -14,6 +15,76 @@ namespace mine
         public Form1()
         {
             InitializeComponent();
+            dataGridView1.Visible = false;
+
+            String connect = "Provider=Microsoft.JET.OLEDB.4.0;data source= ../../mdb/CMMVS.MDB";
+            OleDbConnection con = new OleDbConnection(connect);
+            con.Open();
+
+            // Заполнение списка горизонтов
+            OleDbCommand horizont = new OleDbCommand("select NGOR from CMMVS group by NGOR", con);
+            OleDbDataReader horizontList = horizont.ExecuteReader();
+
+            while (horizontList.Read())
+            {
+                listHorizont.Items.Add(horizontList["NGOR"]);
+            }
+            listHorizont.SetSelected(0, true);
+            // --------------
+
+            con.Close();
+            
+        }
+        
+        private void listHorizont_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            listNbl.Items.Clear();
+            String connect = "Provider=Microsoft.JET.OLEDB.4.0;data source= ../../mdb/CMMVS.MDB";
+            OleDbConnection con = new OleDbConnection(connect);
+            con.Open();
+
+            // Заполнение списка NBL
+            OleDbCommand nbl = new OleDbCommand("SELECT CMMVS.NBL FROM CMMVS WHERE CMMVS.NGOR=" +listHorizont.SelectedItem+ " GROUP BY CMMVS.NBL", con);
+            OleDbDataReader nblList = nbl.ExecuteReader();
+
+            while (nblList.Read())
+            {
+                listNbl.Items.Add(nblList["NBL"]);
+            }
+            // --------------
+
+            con.Close();
+        }
+
+        private void listNbl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            dataGridView1.Visible = true;
+            dataGridView1.Rows.Clear();
+
+            String connect = "Provider=Microsoft.JET.OLEDB.4.0;data source= ../../mdb/CMMVS.MDB";
+            OleDbConnection con = new OleDbConnection(connect);
+            con.Open();
+
+            // Заполнение списка NBL
+            OleDbCommand data = new OleDbCommand("SELECT CMMVS.NSK, CMMVS.X, CMMVS.Y, CMMVS.Z, CMMVS.CUOB, CMMVS.CUOK, CMMVS.MOOB, CMMVS.MOSF FROM CMMVS WHERE CMMVS.NGOR=" +listHorizont.SelectedItem+ " AND CMMVS.NBL=" +listNbl.SelectedItem, con);
+            OleDbDataReader dataGrid = data.ExecuteReader();
+
+            int i = 0;
+            int colls = dataGrid.FieldCount;
+            while (dataGrid.Read())
+            {
+                dataGridView1.Rows.Add();
+                for (int j = 0; j < colls; j++)
+                {
+                    dataGridView1.Rows[i].Cells[j].Value = dataGrid[j];
+                }
+                i++;
+
+            }
+            // --------------
+
+            con.Close();
+
         }
     }
 }
