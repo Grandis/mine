@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.listHorizont = new System.Windows.Forms.ListBox();
             this.listNbl = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -42,9 +42,13 @@
             this.CUOK = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MOOB = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MOSF = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.dToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // listHorizont
@@ -68,7 +72,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.listHorizont);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(12, 27);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(113, 158);
             this.groupBox1.TabIndex = 2;
@@ -78,7 +82,7 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.listNbl);
-            this.groupBox2.Location = new System.Drawing.Point(132, 12);
+            this.groupBox2.Location = new System.Drawing.Point(132, 27);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(72, 158);
             this.groupBox2.TabIndex = 3;
@@ -87,14 +91,17 @@
             // 
             // dataGridView1
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NSK,
@@ -105,7 +112,7 @@
             this.CUOK,
             this.MOOB,
             this.MOSF});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 176);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 191);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(622, 177);
             this.dataGridView1.TabIndex = 4;
@@ -155,20 +162,50 @@
             this.MOSF.Name = "MOSF";
             this.MOSF.Width = 50;
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.dToolStripMenuItem,
+            this.dToolStripMenuItem1});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(646, 24);
+            this.menuStrip1.TabIndex = 5;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // dToolStripMenuItem
+            // 
+            this.dToolStripMenuItem.Name = "dToolStripMenuItem";
+            this.dToolStripMenuItem.Size = new System.Drawing.Size(33, 20);
+            this.dToolStripMenuItem.Text = "2D";
+            this.dToolStripMenuItem.Click += new System.EventHandler(this.dToolStripMenuItem_Click);
+            // 
+            // dToolStripMenuItem1
+            // 
+            this.dToolStripMenuItem1.Name = "dToolStripMenuItem1";
+            this.dToolStripMenuItem1.Size = new System.Drawing.Size(33, 20);
+            this.dToolStripMenuItem1.Text = "3D";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(646, 365);
+            this.ClientSize = new System.Drawing.Size(646, 380);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
+            this.MinimumSize = new System.Drawing.Size(662, 418);
             this.Name = "Form1";
             this.Text = "Form1";
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -187,6 +224,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CUOK;
         private System.Windows.Forms.DataGridViewTextBoxColumn MOOB;
         private System.Windows.Forms.DataGridViewTextBoxColumn MOSF;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem dToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dToolStripMenuItem1;
     }
 }
 

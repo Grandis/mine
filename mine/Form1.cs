@@ -65,7 +65,6 @@ namespace mine
             OleDbConnection con = new OleDbConnection(connect);
             con.Open();
 
-            // Заполнение списка NBL
             OleDbCommand data = new OleDbCommand("SELECT CMMVS.NSK, CMMVS.X, CMMVS.Y, CMMVS.Z, CMMVS.CUOB, CMMVS.CUOK, CMMVS.MOOB, CMMVS.MOSF FROM CMMVS WHERE CMMVS.NGOR=" +listHorizont.SelectedItem+ " AND CMMVS.NBL=" +listNbl.SelectedItem, con);
             OleDbDataReader dataGrid = data.ExecuteReader();
 
@@ -81,9 +80,14 @@ namespace mine
                 i++;
 
             }
-            // --------------
-
             con.Close();
+
+        }
+
+        private void dToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form graf2D = new _2D();
+            graf2D.Show();
 
         }
     }
