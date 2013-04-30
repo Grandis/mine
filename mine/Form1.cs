@@ -86,9 +86,49 @@ namespace mine
 
         private void dToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form graf2D = new _2D();
-            graf2D.Show();
+            String connect = "Provider=Microsoft.JET.OLEDB.4.0;data source= ../../mdb/CMMVS.MDB";
+            OleDbConnection con = new OleDbConnection(connect);
+            con.Open();
 
+            // Подсчет записей:
+            OleDbCommand dataCount = new OleDbCommand("SELECT CMMVS.NSK FROM CMMVS WHERE CMMVS.NGOR=" + listHorizont.SelectedItem + " AND CMMVS.NBL=" + listNbl.SelectedItem, con);
+            OleDbDataReader dataCountReader = dataCount.ExecuteReader();
+            int count = 0;
+            while (dataCountReader.Read())
+            {
+                count++;
+            }
+            // ----------------
+
+            // Формирование массива данных для импорта на форму графика:
+            OleDbCommand dataQuery = new OleDbCommand("SELECT CMMVS.X, CMMVS.Y, CMMVS.CUOB, CMMVS.CUOK, CMMVS.MOOB, CMMVS.MOSF FROM CMMVS WHERE CMMVS.NGOR=" + listHorizont.SelectedItem + " AND CMMVS.NBL=" + listNbl.SelectedItem, con);
+            OleDbDataReader dataRead = dataQuery.ExecuteReader();
+
+            double[,] data2D = new double[count, dataRead.FieldCount];
+
+            int i = 0;
+            while (dataRead.Read())
+            {
+                for (int j = 0; j < dataRead.FieldCount; j++)
+                {
+                    if (dataRead[j].ToString() == "" || dataRead[j] == null)
+                    {
+                        data2D[i, j] = 0;
+                    }
+                    else
+                    {
+                        data2D[i, j] = Convert.ToDouble(dataRead[j]);
+                    }
+                }
+                i++;
+            }
+            // ---------------------------------------------------------
+
+            con.Close();
+
+            Form graf2D = new _2D(data2D);
+            graf2D.Show();
+            
         }
     }
 }

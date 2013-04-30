@@ -11,7 +11,7 @@ namespace mine
 {
     public partial class _2D : Form
     {
-        public _2D()
+        public _2D(double[,] data2D)
         {
             InitializeComponent();
             this.ResizeRedraw = true;
