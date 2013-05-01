@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.listHorizont = new System.Windows.Forms.ListBox();
             this.listNbl = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -94,14 +94,14 @@
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NSK,
@@ -114,6 +114,7 @@
             this.MOSF});
             this.dataGridView1.Location = new System.Drawing.Point(12, 191);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(622, 177);
             this.dataGridView1.TabIndex = 4;
             // 
@@ -121,45 +122,53 @@
             // 
             this.NSK.HeaderText = "Скважина";
             this.NSK.Name = "NSK";
+            this.NSK.ReadOnly = true;
             this.NSK.Width = 60;
             // 
             // X
             // 
             this.X.HeaderText = "X";
             this.X.Name = "X";
+            this.X.ReadOnly = true;
             // 
             // Y
             // 
             this.Y.HeaderText = "Y";
             this.Y.Name = "Y";
+            this.Y.ReadOnly = true;
             // 
             // Z
             // 
             this.Z.HeaderText = "Z";
             this.Z.Name = "Z";
+            this.Z.ReadOnly = true;
             // 
             // CUOB
             // 
             this.CUOB.HeaderText = "CUOB";
             this.CUOB.Name = "CUOB";
+            this.CUOB.ReadOnly = true;
             this.CUOB.Width = 50;
             // 
             // CUOK
             // 
             this.CUOK.HeaderText = "CUOK";
             this.CUOK.Name = "CUOK";
+            this.CUOK.ReadOnly = true;
             this.CUOK.Width = 50;
             // 
             // MOOB
             // 
             this.MOOB.HeaderText = "MOOB";
             this.MOOB.Name = "MOOB";
+            this.MOOB.ReadOnly = true;
             this.MOOB.Width = 50;
             // 
             // MOSF
             // 
             this.MOSF.HeaderText = "MOSF";
             this.MOSF.Name = "MOSF";
+            this.MOSF.ReadOnly = true;
             this.MOSF.Width = 50;
             // 
             // menuStrip1
@@ -190,6 +199,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(646, 380);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox2);

@@ -30,6 +30,7 @@ namespace mine
                 listHorizont.Items.Add(horizontList["NGOR"]);
             }
             listHorizont.SetSelected(0, true);
+            listNbl.SetSelected(0, true);
             // --------------
 
             con.Close();
