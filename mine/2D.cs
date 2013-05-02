@@ -12,7 +12,9 @@ namespace mine
     public partial class _2D : Form
     {
         double[,] data2D;
-        int segmentsAmount = 5;
+        int segmentsAmount = 5; // Количество делений сетки.
+        int margin = 60; // Отступ графика от краев формы.
+
         public _2D(double[,] data2D)
         {
             InitializeComponent();
@@ -25,7 +27,6 @@ namespace mine
             Graphics gr = e.Graphics;
             Pen axis = new Pen(Color.Black, 3);
             
-            int margin = 60; // Отступ графика от краев формы.
             Point yMax = new Point(margin, margin / 2);
             Point xMax = new Point(ClientSize.Width - margin / 2, ClientSize.Height - margin);
             Point nullPoint = new Point(margin, ClientSize.Height - margin);
@@ -44,7 +45,6 @@ namespace mine
         // Сетка на графике:
         public void drawLines(Graphics gr, int margin)
         {
-            
             Pen grid = new Pen(Color.Gray, 1);
             float width = ClientSize.Width - margin * 2;
             float height = ClientSize.Height - margin * 2;
@@ -93,23 +93,19 @@ namespace mine
             {
                 x = (float)(data2D[i,0] - minX * 100) * scaleX + margin - 1;
                 y = (float)(data2D[i,1] - minY * 100) * scaleY + margin - 1;
-                gr.FillRectangle(Brushes.Red, x, y, 3, 3);
+                gr.FillRectangle(Brushes.Red, x, ClientSize.Height - y, 3, 3);
             }
-
-
             // Подписываем иксы:
-            gr.DrawString((minX * 100).ToString(), new Font(SystemFonts.DefaultFont, FontStyle.Regular), Brushes.Black, 45, ClientSize.Height - 40);
-            for (int i = 1; i <= segmentsAmount; i++)
+            for (int i = 0; i <= segmentsAmount; i++)
             {
                 gr.DrawString((minX * 100 + segmentsX * (100 / segmentsAmount) * i).ToString(), new Font(SystemFonts.DefaultFont, FontStyle.Regular), Brushes.Black, width / segmentsAmount * i + 45, ClientSize.Height - 40);
             }
             // -----------------
 
             // Подписываем игреки:
-            gr.DrawString((minY * 100).ToString(), new Font(SystemFonts.DefaultFont, FontStyle.Regular), Brushes.Black, 10, margin - 5);
-            for (int i = 1; i <= segmentsAmount; i++)
+            for (int i = 0; i <= segmentsAmount; i++)
             {
-                gr.DrawString((minY * 100 + segmentsY * (100 / segmentsAmount) * i).ToString(), new Font(SystemFonts.DefaultFont, FontStyle.Regular), Brushes.Black, 10, height / segmentsAmount * i + margin - 5);
+                gr.DrawString((minY * 100 + segmentsY * (100 - i * 20)).ToString(), new Font(SystemFonts.DefaultFont, FontStyle.Regular), Brushes.Black, 10, height / segmentsAmount * i + margin - 5);
             }
             // -----------------
         }

@@ -34,7 +34,6 @@ namespace mine
             // --------------
 
             con.Close();
-            
         }
         
         private void listHorizont_SelectedIndexChanged(object sender, EventArgs e)
