@@ -95,6 +95,7 @@ namespace mine
                 y = (float)(data2D[i,1] - minY * 100) * scaleY + margin - 1;
                 gr.FillRectangle(Brushes.Red, x, ClientSize.Height - y, 3, 3);
             }
+
             // Подписываем иксы:
             for (int i = 0; i <= segmentsAmount; i++)
             {
@@ -105,7 +106,7 @@ namespace mine
             // Подписываем игреки:
             for (int i = 0; i <= segmentsAmount; i++)
             {
-                gr.DrawString((minY * 100 + segmentsY * (100 - i * 20)).ToString(), new Font(SystemFonts.DefaultFont, FontStyle.Regular), Brushes.Black, 10, height / segmentsAmount * i + margin - 5);
+                gr.DrawString((minY * 100 + segmentsY * (100 - i * (100 / segmentsAmount))).ToString(), new Font(SystemFonts.DefaultFont, FontStyle.Regular), Brushes.Black, 10, height / segmentsAmount * i + margin - 5);
             }
             // -----------------
         }

@@ -78,7 +78,6 @@ namespace mine
                     dataGridView1.Rows[i].Cells[j].Value = dataGrid[j];
                 }
                 i++;
-
             }
             con.Close();
 
@@ -123,7 +122,6 @@ namespace mine
                 i++;
             }
             // ---------------------------------------------------------
-
             con.Close();
 
             Form graf2D = new _2D(data2D);
