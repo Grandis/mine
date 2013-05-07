@@ -39,10 +39,12 @@
             this.Name = "_2D";
             this.Text = "2D";
             this.Paint += new System.Windows.Forms.PaintEventHandler(this._2D_Paint);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this._2D_MouseDown);
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
     }
 }
