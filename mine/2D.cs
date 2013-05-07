@@ -12,8 +12,10 @@ namespace mine
     public partial class _2D : Form
     {
         double[,] data2D;
-        int segmentsAmount = 5; // Количество делений сетки.
+        int segmentsAmount = 4; // Количество делений сетки.
         int margin = 60; // Отступ графика от краев формы.
+        int piece = 0;
+        Graphics gr;
 
         public _2D(double[,] data2D)
         {
@@ -24,7 +26,7 @@ namespace mine
 
         private void _2D_Paint(object sender, PaintEventArgs e)
         {
-            Graphics gr = e.Graphics;
+            gr = e.Graphics;
             Pen axis = new Pen(Color.Black, 3);
             
             Point yMax = new Point(margin, margin / 2);
@@ -38,12 +40,12 @@ namespace mine
             gr.DrawString("X", new Font(SystemFonts.DefaultFont, FontStyle.Bold), Brushes.Black, ClientSize.Width - 20, ClientSize.Height - margin); 
             // ------------------------------------
 
-            drawLines(gr); // Рисуем сетку.
-            drawPoints(gr);
+            drawLines(); // Рисуем сетку.
+            drawPoints();
         }
 
         // Сетка на графике:
-        public void drawLines(Graphics gr)
+        public void drawLines()
         {
             Pen grid = new Pen(Color.Gray, 1);
             float width = ClientSize.Width - margin * 2;
@@ -66,10 +68,10 @@ namespace mine
         // ------------------------------------------
 
         // Наносим на график координаты скважин:
-        public void drawPoints(Graphics gr)
+        public void drawPoints()
         {
-            float x;
-            float y;
+            float x, scaleX, segmentsX;
+            float y, scaleY, segmentsY;
             int width = ClientSize.Width - margin * 2;
             int height = ClientSize.Height - margin * 2;
             
@@ -83,20 +85,34 @@ namespace mine
                 if ((int)data2D[i, 2] / 100 < minY) minY = (int)data2D[i, 2] / 100;
             }
 
-            int segmentsX = (maxX - minX) + 1;
-            int segmentsY = (maxY - minY) + 1;
+            if (piece == 0)
+            {
+                segmentsX = (maxX - minX) + 1;
+                segmentsY = (maxY - minY) + 1;
+            }
+            else
+            {
+                segmentsX = ((maxX - minX) + 1) / 2f;
+                segmentsY = ((maxY - minY) + 1) / 2f;
+            }
 
-            float scaleX = width / (segmentsX * 100.00f);
-            float scaleY = height / (segmentsY * 100.00f);
+                scaleX = width / (segmentsX * 100.00f);
+                scaleY = height / (segmentsY * 100.00f);
 
             for (int i = 0; i < data2D.GetLength(0); i++)
             {
                 x = (float)(data2D[i,1] - minX * 100) * scaleX + margin - 1;
+                if (piece == 2 || piece == 4) x -= width;
                 y = (float)(data2D[i,2] - minY * 100) * scaleY + margin - 1;
-                gr.FillRectangle(Brushes.Red, x, ClientSize.Height - y, 3, 3);
-                gr.DrawString(data2D[i, 0].ToString(), new Font(SystemFonts.DefaultFont, FontStyle.Regular), Brushes.DarkBlue, x, ClientSize.Height - y);
+                if (piece == 3 || piece == 4) y -= height;
+                if (x >= margin && x <= ClientSize.Width - margin && y >= margin && y <= ClientSize.Height - margin)
+                {
+                    gr.FillRectangle(Brushes.Red, x, ClientSize.Height - y, 3, 3);
+                    gr.DrawString(data2D[i, 0].ToString(), new Font(SystemFonts.DefaultFont, FontStyle.Regular), Brushes.DarkBlue, x, ClientSize.Height - y);
+                }
             }
-
+            if (piece == 0)
+            {
                 // Подписываем иксы:
                 for (int i = 0; i <= segmentsAmount; i++)
                 {
@@ -110,18 +126,20 @@ namespace mine
                     gr.DrawString((minY * 100 + segmentsY * (100 - i * (100 / segmentsAmount))).ToString(), new Font(SystemFonts.DefaultFont, FontStyle.Regular), Brushes.Black, 10, height / segmentsAmount * i + margin - 5);
                 }
                 // -----------------
+            }
         }
         // -------------------------------------
 
         private void _2D_MouseDown(object sender, MouseEventArgs e)
         {
-            /*
-            if (MousePosition.X <= ClientSize.Width / 2 && MousePosition.Y <= ClientSize.Height / 2) piece = 1;
-            else if (MousePosition.X > ClientSize.Width / 2 && MousePosition.Y <= ClientSize.Height / 2) piece = 2;
-            else if (MousePosition.X <= ClientSize.Width / 2 && MousePosition.Y > ClientSize.Height / 2) piece = 3;
-            else if (MousePosition.X > ClientSize.Width / 2 && MousePosition.Y > ClientSize.Height / 2) piece = 4;
-            */
-        }
+            if (e.Location.X <= ClientSize.Width / 2 && e.Location.Y > ClientSize.Height / 2) piece = 1;
+            else if (e.Location.X > ClientSize.Width / 2 && e.Location.Y > ClientSize.Height / 2) piece = 2;
+            else if (e.Location.X <= ClientSize.Width / 2 && e.Location.Y <= ClientSize.Height / 2) piece = 3;
+            else if (e.Location.X > ClientSize.Width / 2 && e.Location.Y <= ClientSize.Height / 2) piece = 4;
 
+            if (e.Button == MouseButtons.Right) piece = 0;
+
+            this.Refresh();
+        }
     }
 }

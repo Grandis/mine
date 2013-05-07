@@ -65,7 +65,7 @@
             this.listNbl.FormattingEnabled = true;
             this.listNbl.Location = new System.Drawing.Point(6, 18);
             this.listNbl.Name = "listNbl";
-            this.listNbl.Size = new System.Drawing.Size(60, 134);
+            this.listNbl.Size = new System.Drawing.Size(76, 134);
             this.listNbl.TabIndex = 1;
             this.listNbl.SelectedIndexChanged += new System.EventHandler(this.listNbl_SelectedIndexChanged);
             // 
@@ -84,10 +84,10 @@
             this.groupBox2.Controls.Add(this.listNbl);
             this.groupBox2.Location = new System.Drawing.Point(132, 27);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(72, 158);
+            this.groupBox2.Size = new System.Drawing.Size(88, 158);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Номер бл";
+            this.groupBox2.Text = "Номер блока";
             // 
             // dataGridView1
             // 

@@ -43,7 +43,7 @@ namespace mine
             OleDbConnection con = new OleDbConnection(connect);
             con.Open();
 
-            // Заполнение списка NBL
+            // Заполнение списка номеров блоков
             OleDbCommand nbl = new OleDbCommand("SELECT CMMVS.NBL FROM CMMVS WHERE CMMVS.NGOR=" +listHorizont.SelectedItem+ " GROUP BY CMMVS.NBL", con);
             OleDbDataReader nblList = nbl.ExecuteReader();
 
