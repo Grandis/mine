@@ -43,7 +43,7 @@
             this.MOOB = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MOSF = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.dToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.TwoDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -174,7 +174,7 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.dToolStripMenuItem,
+            this.TwoDToolStripMenuItem,
             this.dToolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -182,12 +182,12 @@
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // dToolStripMenuItem
+            // TwoDToolStripMenuItem
             // 
-            this.dToolStripMenuItem.Name = "dToolStripMenuItem";
-            this.dToolStripMenuItem.Size = new System.Drawing.Size(33, 20);
-            this.dToolStripMenuItem.Text = "2D";
-            this.dToolStripMenuItem.Click += new System.EventHandler(this.dToolStripMenuItem_Click);
+            this.TwoDToolStripMenuItem.Name = "TwoDToolStripMenuItem";
+            this.TwoDToolStripMenuItem.Size = new System.Drawing.Size(33, 20);
+            this.TwoDToolStripMenuItem.Text = "2D";
+            this.TwoDToolStripMenuItem.Click += new System.EventHandler(this.TwoDToolStripMenuItem_Click);
             // 
             // dToolStripMenuItem1
             // 
@@ -235,7 +235,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn MOOB;
         private System.Windows.Forms.DataGridViewTextBoxColumn MOSF;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem dToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem TwoDToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dToolStripMenuItem1;
     }
 }
