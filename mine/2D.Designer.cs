@@ -29,15 +29,19 @@
         private void InitializeComponent()
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.сформироватьДанныеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.обновитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.режимыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.работаСДвумернойГрафикойToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.колесикоToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.подписиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cUOBToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cUOKToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mOOBToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mOSFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.обновитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.работаСДвумернойГрафикойToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.колесикоToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -45,7 +49,7 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.сформироватьДанныеToolStripMenuItem,
+            this.подписиToolStripMenuItem,
             this.обновитьToolStripMenuItem,
             this.режимыToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -53,21 +57,6 @@
             this.menuStrip1.Size = new System.Drawing.Size(784, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
-            // 
-            // сформироватьДанныеToolStripMenuItem
-            // 
-            this.сформироватьДанныеToolStripMenuItem.Name = "сформироватьДанныеToolStripMenuItem";
-            this.сформироватьДанныеToolStripMenuItem.Size = new System.Drawing.Size(147, 20);
-            this.сформироватьДанныеToolStripMenuItem.Text = "Сформировать данные";
-            this.сформироватьДанныеToolStripMenuItem.Click += new System.EventHandler(this.сформироватьДанныеToolStripMenuItem_Click);
-            // 
-            // обновитьToolStripMenuItem
-            // 
-            this.обновитьToolStripMenuItem.Image = global::mine.Properties.Resources.Image1;
-            this.обновитьToolStripMenuItem.Name = "обновитьToolStripMenuItem";
-            this.обновитьToolStripMenuItem.Size = new System.Drawing.Size(89, 20);
-            this.обновитьToolStripMenuItem.Text = "Обновить";
-            this.обновитьToolStripMenuItem.Click += new System.EventHandler(this.обновитьToolStripMenuItem_Click);
             // 
             // режимыToolStripMenuItem
             // 
@@ -77,6 +66,95 @@
             this.режимыToolStripMenuItem.Name = "режимыToolStripMenuItem";
             this.режимыToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
             this.режимыToolStripMenuItem.Text = "Режимы";
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton1,
+            this.toolStripButton2,
+            this.toolStripButton3});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 24);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(784, 25);
+            this.toolStrip1.TabIndex = 1;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // подписиToolStripMenuItem
+            // 
+            this.подписиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cUOBToolStripMenuItem,
+            this.cUOKToolStripMenuItem,
+            this.mOOBToolStripMenuItem,
+            this.mOSFToolStripMenuItem});
+            this.подписиToolStripMenuItem.Name = "подписиToolStripMenuItem";
+            this.подписиToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
+            this.подписиToolStripMenuItem.Text = "Данные";
+            // 
+            // cUOBToolStripMenuItem
+            // 
+            this.cUOBToolStripMenuItem.Name = "cUOBToolStripMenuItem";
+            this.cUOBToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cUOBToolStripMenuItem.Text = "CUOB";
+            this.cUOBToolStripMenuItem.Click += new System.EventHandler(this.cUOBToolStripMenuItem_Click);
+            // 
+            // cUOKToolStripMenuItem
+            // 
+            this.cUOKToolStripMenuItem.Name = "cUOKToolStripMenuItem";
+            this.cUOKToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cUOKToolStripMenuItem.Text = "CUOK";
+            this.cUOKToolStripMenuItem.Click += new System.EventHandler(this.cUOKToolStripMenuItem_Click);
+            // 
+            // mOOBToolStripMenuItem
+            // 
+            this.mOOBToolStripMenuItem.Name = "mOOBToolStripMenuItem";
+            this.mOOBToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.mOOBToolStripMenuItem.Text = "MOOB";
+            this.mOOBToolStripMenuItem.Click += new System.EventHandler(this.mOOBToolStripMenuItem_Click);
+            // 
+            // mOSFToolStripMenuItem
+            // 
+            this.mOSFToolStripMenuItem.Name = "mOSFToolStripMenuItem";
+            this.mOSFToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.mOSFToolStripMenuItem.Text = "MOSF";
+            this.mOSFToolStripMenuItem.Click += new System.EventHandler(this.mOSFToolStripMenuItem_Click);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = global::mine.Properties.Resources._1;
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton1.Text = "Кнопки";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton2.Image = global::mine.Properties.Resources._2;
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton2.Text = "Колесико";
+            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
+            // 
+            // toolStripButton3
+            // 
+            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton3.Image = global::mine.Properties.Resources.update;
+            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton3.Name = "toolStripButton3";
+            this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton3.Text = "Обновить";
+            this.toolStripButton3.Click += new System.EventHandler(this.обновитьToolStripMenuItem_Click);
+            // 
+            // обновитьToolStripMenuItem
+            // 
+            this.обновитьToolStripMenuItem.Image = global::mine.Properties.Resources.update;
+            this.обновитьToolStripMenuItem.Name = "обновитьToolStripMenuItem";
+            this.обновитьToolStripMenuItem.Size = new System.Drawing.Size(89, 20);
+            this.обновитьToolStripMenuItem.Text = "Обновить";
+            this.обновитьToolStripMenuItem.Click += new System.EventHandler(this.обновитьToolStripMenuItem_Click);
             // 
             // работаСДвумернойГрафикойToolStripMenuItem
             // 
@@ -93,48 +171,6 @@
             this.колесикоToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
             this.колесикоToolStripMenuItem.Text = "Колесико";
             this.колесикоToolStripMenuItem.Click += new System.EventHandler(this.toolStripButton2_Click);
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1,
-            this.toolStripButton2,
-            this.toolStripButton3});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 24);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(784, 25);
-            this.toolStrip1.TabIndex = 1;
-            this.toolStrip1.Text = "toolStrip1";
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = global::mine.Properties.Resources._1;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton1.Text = "toolStripButton1";
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
-            // 
-            // toolStripButton2
-            // 
-            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton2.Image = global::mine.Properties.Resources._2;
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton2.Text = "toolStripButton2";
-            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
-            // 
-            // toolStripButton3
-            // 
-            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton3.Image = global::mine.Properties.Resources.Image1;
-            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton3.Text = "toolStripButton3";
-            this.toolStripButton3.Click += new System.EventHandler(this.обновитьToolStripMenuItem_Click);
             // 
             // _2D
             // 
@@ -163,7 +199,6 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem сформироватьДанныеToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem обновитьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem режимыToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem работаСДвумернойГрафикойToolStripMenuItem;
@@ -172,6 +207,11 @@
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripButton toolStripButton3;
+        private System.Windows.Forms.ToolStripMenuItem подписиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cUOBToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cUOKToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mOOBToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mOSFToolStripMenuItem;
 
     }
 }

@@ -43,8 +43,8 @@
             this.MOOB = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MOSF = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.TwoDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.TwoDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -182,18 +182,20 @@
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // TwoDToolStripMenuItem
-            // 
-            this.TwoDToolStripMenuItem.Name = "TwoDToolStripMenuItem";
-            this.TwoDToolStripMenuItem.Size = new System.Drawing.Size(33, 20);
-            this.TwoDToolStripMenuItem.Text = "2D";
-            this.TwoDToolStripMenuItem.Click += new System.EventHandler(this.TwoDToolStripMenuItem_Click);
-            // 
             // dToolStripMenuItem1
             // 
+            this.dToolStripMenuItem1.Image = global::mine.Properties.Resources._3d;
             this.dToolStripMenuItem1.Name = "dToolStripMenuItem1";
-            this.dToolStripMenuItem1.Size = new System.Drawing.Size(33, 20);
+            this.dToolStripMenuItem1.Size = new System.Drawing.Size(49, 20);
             this.dToolStripMenuItem1.Text = "3D";
+            // 
+            // TwoDToolStripMenuItem
+            // 
+            this.TwoDToolStripMenuItem.Image = global::mine.Properties.Resources._2d;
+            this.TwoDToolStripMenuItem.Name = "TwoDToolStripMenuItem";
+            this.TwoDToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
+            this.TwoDToolStripMenuItem.Text = "2D";
+            this.TwoDToolStripMenuItem.Click += new System.EventHandler(this.TwoDToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -208,7 +210,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(662, 418);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Работа с БД";
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

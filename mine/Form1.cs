@@ -101,7 +101,7 @@ namespace mine
             // ----------------
 
             // Формирование массива данных для импорта на форму графика:
-            OleDbCommand dataQuery = new OleDbCommand("SELECT CMMVS.NSK, CMMVS.X, CMMVS.Y, CMMVS.Z, CMMVS.CUOB, CMMVS.CUOK, CMMVS.MOOB, CMMVS.MOSF FROM CMMVS WHERE CMMVS.NGOR=" + listHorizont.SelectedItem + " AND CMMVS.NBL=" + listNbl.SelectedItem, con);
+            OleDbCommand dataQuery = new OleDbCommand("SELECT CMMVS.NSK, CMMVS.X, CMMVS.Y, CMMVS.CUOB, CMMVS.CUOK, CMMVS.MOOB, CMMVS.MOSF FROM CMMVS WHERE CMMVS.NGOR=" + listHorizont.SelectedItem + " AND CMMVS.NBL=" + listNbl.SelectedItem, con);
             OleDbDataReader dataRead = dataQuery.ExecuteReader();
 
             double[,] data2D = new double[count, dataRead.FieldCount];

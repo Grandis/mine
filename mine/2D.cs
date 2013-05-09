@@ -13,6 +13,7 @@ namespace mine
     {
         double[,] data2D;
         int count;
+        int caption = 0;
         
         Point PointBegin = Point.Empty;
         Point PointEnd = Point.Empty;
@@ -24,7 +25,7 @@ namespace mine
 
 
         double[] X;//  
-        double[] Y;//  координпты исходных точек
+        double[] Y;//  координаты исходных точек
         double[] Z;//
 
         double Xmin, Xmax, Ymin, Ymax;         // текущие пределы  
@@ -78,7 +79,7 @@ namespace mine
             {
                 X[kol] = data2D[kol, 1];
                 Y[kol] = data2D[kol,2];
-                Z[kol] = data2D[kol,0];
+                Z[kol] = data2D[kol,caption];
                 kol++;
             }
         }
@@ -227,7 +228,8 @@ namespace mine
                 if (X[i] > Xmax || X[i] < Xmin || Y[i] > Ymax || Y[i] < Ymin) continue;
                 koor_x = (int)((X[i] - Xmin) / K_e_px + ots_lev1 + ots_lev2);
                 koor_y = (int)((Ymax - Y[i]) / K_e_py + ots_ver1 + ots_ver2);
-                buf = string.Format("{0:F0}", Z[i]);
+                if (caption == 0) buf = string.Format("{0:F0}", Z[i]);
+                else buf = string.Format("{0:F3}", Z[i]);
                 gr.DrawString(buf, font_pok, Brushes.Black,
                 koor_x, koor_y, sf);
                 gr.FillEllipse(new SolidBrush(Color.Red), koor_x - 3, koor_y - 3, 6, 6);
@@ -365,18 +367,11 @@ namespace mine
             Invalidate();
         }
 
-        //Сформировать данные
-        private void сформироватьДанныеToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Form_mas();
-            Nastroyka();  // Настройка	
-            Max_Min();    // Max-Min
-            Invalidate();
-        }
-
         //Обновить
         private void обновитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            caption = 0;
+            Form_mas();
             Nastroyka();  // Настройка	
             Max_Min();    // Max-Min
             Invalidate();
@@ -400,6 +395,49 @@ namespace mine
             flag = true;
             Cursor = Cursors.Cross;
             Invalidate();
+        }
+
+        private void cUOBToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            caption = 3;
+
+            Form_mas();
+            Nastroyka();  // Настройка	
+            Max_Min();    // Max-Min
+            Invalidate();
+        }
+
+        private void cUOKToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            caption = 4;
+
+            Form_mas();
+            Nastroyka();  // Настройка	
+            Max_Min();    // Max-Min
+            Invalidate();
+
+        }
+
+        private void mOOBToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            caption = 5;
+
+            Form_mas();
+            Nastroyka();  // Настройка	
+            Max_Min();    // Max-Min
+            Invalidate();
+
+        }
+
+        private void mOSFToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            caption = 6;
+
+            Form_mas();
+            Nastroyka();  // Настройка	
+            Max_Min();    // Max-Min
+            Invalidate();
+
         }
     }
 }
