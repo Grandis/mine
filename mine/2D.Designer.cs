@@ -40,6 +40,8 @@
             this.Text = "2D";
             this.Paint += new System.Windows.Forms.PaintEventHandler(this._2D_Paint);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this._2D_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this._2D_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this._2D_MouseUp);
             this.ResumeLayout(false);
 
         }

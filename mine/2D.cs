@@ -15,6 +15,7 @@ namespace mine
         int segmentsAmount = 4; // Количество делений сетки.
         int margin = 60; // Отступ графика от краев формы.
         int piece = 0;
+        int x1, x2, xDiff = 0, y1, y2, yDiff = 0;
         Graphics gr;
 
         public _2D(double[,] data2D)
@@ -101,9 +102,9 @@ namespace mine
 
             for (int i = 0; i < data2D.GetLength(0); i++)
             {
-                x = (float)(data2D[i,1] - minX * 100) * scaleX + margin - 1;
+                x = (float)((data2D[i,1] - minX * 100) * scaleX + margin - 1) + xDiff;
                 if (piece == 2 || piece == 4) x -= width;
-                y = (float)(data2D[i,2] - minY * 100) * scaleY + margin - 1;
+                y = (float)((data2D[i,2] - minY * 100) * scaleY + margin - 1) - yDiff;
                 if (piece == 3 || piece == 4) y -= height;
                 if (x >= margin && x <= ClientSize.Width - margin && y >= margin && y <= ClientSize.Height - margin)
                 {
@@ -132,14 +133,50 @@ namespace mine
 
         private void _2D_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Location.X <= ClientSize.Width / 2 && e.Location.Y > ClientSize.Height / 2) piece = 1;
-            else if (e.Location.X > ClientSize.Width / 2 && e.Location.Y > ClientSize.Height / 2) piece = 2;
-            else if (e.Location.X <= ClientSize.Width / 2 && e.Location.Y <= ClientSize.Height / 2) piece = 3;
-            else if (e.Location.X > ClientSize.Width / 2 && e.Location.Y <= ClientSize.Height / 2) piece = 4;
+            if (piece == 0)
+            {
+                if (e.Location.X <= ClientSize.Width / 2 && e.Location.Y > ClientSize.Height / 2) piece = 1;
+                else if (e.Location.X > ClientSize.Width / 2 && e.Location.Y > ClientSize.Height / 2) piece = 2;
+                else if (e.Location.X <= ClientSize.Width / 2 && e.Location.Y <= ClientSize.Height / 2) piece = 3;
+                else if (e.Location.X > ClientSize.Width / 2 && e.Location.Y <= ClientSize.Height / 2) piece = 4;
+                this.Refresh();
+            }
+                x1 = e.Location.X;
+                y1 = e.Location.Y;
+            this.Text = x1 + "  " + y1;
 
-            if (e.Button == MouseButtons.Right) piece = 0;
+            if (e.Button == MouseButtons.Right)
+            {
+                piece = 0;
+                xDiff = 0;
+                yDiff = 0;
+                this.Refresh();
+            }
+            
+        }
 
-            this.Refresh();
+        private void _2D_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left && e.Location.X != x1 || e.Location.Y != y1)
+            {
+                x2 = e.Location.X;
+                y2 = e.Location.Y;
+
+                xDiff = x2 - x1;
+                yDiff = y2 - y1;
+
+                this.Refresh();
+                this.Text = xDiff + "  " + yDiff;
+            }
+        }
+
+        private void _2D_MouseMove(object sender, MouseEventArgs e)
+        {
+            /*
+            if (e.Button == MouseButtons.Left)
+            ControlPaint.DrawReversibleLine(PointToScreen(new Point(x1, y1)), PointToScreen(e.Location), Color.FromArgb(255, 255, 0));
+            return;
+             */
         }
     }
 }
