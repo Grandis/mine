@@ -60,6 +60,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Simplex.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Simplex.Designer.cs">
+      <DependentUpon>Simplex.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="2D.resx">
       <DependentUpon>2D.cs</DependentUpon>
     </EmbeddedResource>
@@ -76,6 +82,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Simplex.resx">
+      <DependentUpon>Simplex.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -109,6 +118,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\Resources\down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Resources\function.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

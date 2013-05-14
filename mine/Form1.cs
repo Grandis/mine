@@ -134,5 +134,11 @@ namespace mine
         {
 
         }
+
+        private void simplexToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form simplexFrm = new Simplex();
+            simplexFrm.Show();
+        }
     }
 }

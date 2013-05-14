@@ -43,6 +43,7 @@
             this.MOOB = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MOSF = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.simplexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TwoDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
@@ -175,12 +176,21 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.TwoDToolStripMenuItem,
-            this.dToolStripMenuItem1});
+            this.dToolStripMenuItem1,
+            this.simplexToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(646, 24);
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // simplexToolStripMenuItem
+            // 
+            this.simplexToolStripMenuItem.Image = global::mine.Properties.Resources.function;
+            this.simplexToolStripMenuItem.Name = "simplexToolStripMenuItem";
+            this.simplexToolStripMenuItem.Size = new System.Drawing.Size(91, 20);
+            this.simplexToolStripMenuItem.Text = "Симплекс";
+            this.simplexToolStripMenuItem.Click += new System.EventHandler(this.simplexToolStripMenuItem_Click);
             // 
             // TwoDToolStripMenuItem
             // 
@@ -240,6 +250,7 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem TwoDToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem simplexToolStripMenuItem;
     }
 }
 
