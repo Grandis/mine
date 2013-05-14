@@ -12,6 +12,7 @@ namespace mine
     public partial class _2D : Form
     {
         double[,] data2D;
+        string title = "Работа с двумерной графикой";
         int count;
         int caption = 0;
         
@@ -136,13 +137,11 @@ namespace mine
             double pr;
             string buf;
 
-
             if (flag == false)
             {
                 Xmin = Math.Floor(Xmin / N) * N;
                 Ymin = Math.Floor(Ymin / N) * N;
             }
-
 
             if (CD >= 0)
             {
@@ -168,11 +167,8 @@ namespace mine
 
 
             // Вывод заголовка 
-            if (flag == false) buf = "Работа с двумерной графикой";
-            else buf = "Режим колесика";
-            
             sf.Alignment = sf.LineAlignment = StringAlignment.Center;
-            gr.DrawString(buf, font_nad, Brushes.Black,
+            gr.DrawString(title, font_nad, Brushes.Black,
             ClientSize.Width / 2, (menuStrip1.Height + toolStrip1.Height + ots_ver1) / 2, sf);
 
 
@@ -371,6 +367,8 @@ namespace mine
         private void обновитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             caption = 0;
+            title = "Работа с двумерной графикой";
+
             Form_mas();
             Nastroyka();  // Настройка	
             Max_Min();    // Max-Min
@@ -400,6 +398,7 @@ namespace mine
         private void cUOBToolStripMenuItem_Click(object sender, EventArgs e)
         {
             caption = 3;
+            title = "CUOB";
 
             Form_mas();
             Nastroyka();  // Настройка	
@@ -410,6 +409,7 @@ namespace mine
         private void cUOKToolStripMenuItem_Click(object sender, EventArgs e)
         {
             caption = 4;
+            title = "CUOK";
 
             Form_mas();
             Nastroyka();  // Настройка	
@@ -421,6 +421,7 @@ namespace mine
         private void mOOBToolStripMenuItem_Click(object sender, EventArgs e)
         {
             caption = 5;
+            title = "MOOB";
 
             Form_mas();
             Nastroyka();  // Настройка	
@@ -432,6 +433,7 @@ namespace mine
         private void mOSFToolStripMenuItem_Click(object sender, EventArgs e)
         {
             caption = 6;
+            title = "MOSF";
 
             Form_mas();
             Nastroyka();  // Настройка	

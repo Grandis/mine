@@ -129,5 +129,10 @@ namespace mine
             graf2D.Show();
             
         }
+
+        private void dToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

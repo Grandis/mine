@@ -43,8 +43,8 @@
             this.MOOB = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MOSF = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.dToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.TwoDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -182,13 +182,6 @@
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // dToolStripMenuItem1
-            // 
-            this.dToolStripMenuItem1.Image = global::mine.Properties.Resources._3d;
-            this.dToolStripMenuItem1.Name = "dToolStripMenuItem1";
-            this.dToolStripMenuItem1.Size = new System.Drawing.Size(49, 20);
-            this.dToolStripMenuItem1.Text = "3D";
-            // 
             // TwoDToolStripMenuItem
             // 
             this.TwoDToolStripMenuItem.Image = global::mine.Properties.Resources._2d;
@@ -196,6 +189,14 @@
             this.TwoDToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
             this.TwoDToolStripMenuItem.Text = "2D";
             this.TwoDToolStripMenuItem.Click += new System.EventHandler(this.TwoDToolStripMenuItem_Click);
+            // 
+            // dToolStripMenuItem1
+            // 
+            this.dToolStripMenuItem1.Image = global::mine.Properties.Resources._3d;
+            this.dToolStripMenuItem1.Name = "dToolStripMenuItem1";
+            this.dToolStripMenuItem1.Size = new System.Drawing.Size(49, 20);
+            this.dToolStripMenuItem1.Text = "3D";
+            this.dToolStripMenuItem1.Click += new System.EventHandler(this.dToolStripMenuItem1_Click);
             // 
             // Form1
             // 
