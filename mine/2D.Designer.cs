@@ -29,16 +29,18 @@
         private void InitializeComponent()
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.режимыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.подписиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cUOBToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cUOKToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mOOBToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mOSFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.режимыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
             this.обновитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.работаСДвумернойГрафикойToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.колесикоToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,27 +60,6 @@
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // режимыToolStripMenuItem
-            // 
-            this.режимыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.работаСДвумернойГрафикойToolStripMenuItem,
-            this.колесикоToolStripMenuItem});
-            this.режимыToolStripMenuItem.Name = "режимыToolStripMenuItem";
-            this.режимыToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
-            this.режимыToolStripMenuItem.Text = "Режимы";
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1,
-            this.toolStripButton2,
-            this.toolStripButton3});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 24);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(784, 25);
-            this.toolStrip1.TabIndex = 1;
-            this.toolStrip1.Text = "toolStrip1";
-            // 
             // подписиToolStripMenuItem
             // 
             this.подписиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -93,30 +74,53 @@
             // cUOBToolStripMenuItem
             // 
             this.cUOBToolStripMenuItem.Name = "cUOBToolStripMenuItem";
-            this.cUOBToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cUOBToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.cUOBToolStripMenuItem.Text = "CUOB";
             this.cUOBToolStripMenuItem.Click += new System.EventHandler(this.cUOBToolStripMenuItem_Click);
             // 
             // cUOKToolStripMenuItem
             // 
             this.cUOKToolStripMenuItem.Name = "cUOKToolStripMenuItem";
-            this.cUOKToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cUOKToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.cUOKToolStripMenuItem.Text = "CUOK";
             this.cUOKToolStripMenuItem.Click += new System.EventHandler(this.cUOKToolStripMenuItem_Click);
             // 
             // mOOBToolStripMenuItem
             // 
             this.mOOBToolStripMenuItem.Name = "mOOBToolStripMenuItem";
-            this.mOOBToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.mOOBToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.mOOBToolStripMenuItem.Text = "MOOB";
             this.mOOBToolStripMenuItem.Click += new System.EventHandler(this.mOOBToolStripMenuItem_Click);
             // 
             // mOSFToolStripMenuItem
             // 
             this.mOSFToolStripMenuItem.Name = "mOSFToolStripMenuItem";
-            this.mOSFToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.mOSFToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.mOSFToolStripMenuItem.Text = "MOSF";
             this.mOSFToolStripMenuItem.Click += new System.EventHandler(this.mOSFToolStripMenuItem_Click);
+            // 
+            // режимыToolStripMenuItem
+            // 
+            this.режимыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.работаСДвумернойГрафикойToolStripMenuItem,
+            this.колесикоToolStripMenuItem});
+            this.режимыToolStripMenuItem.Name = "режимыToolStripMenuItem";
+            this.режимыToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
+            this.режимыToolStripMenuItem.Text = "Режимы";
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton1,
+            this.toolStripButton2,
+            this.toolStripButton3,
+            this.toolStripButton4,
+            this.toolStripButton5});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 24);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(784, 25);
+            this.toolStrip1.TabIndex = 1;
+            this.toolStrip1.Text = "toolStrip1";
             // 
             // toolStripButton1
             // 
@@ -145,8 +149,28 @@
             this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton3.Name = "toolStripButton3";
             this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton3.Text = "Обновить";
+            this.toolStripButton3.Text = "Вернуться к начальному виду";
             this.toolStripButton3.Click += new System.EventHandler(this.обновитьToolStripMenuItem_Click);
+            // 
+            // toolStripButton4
+            // 
+            this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton4.Image = global::mine.Properties.Resources.up;
+            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton4.Name = "toolStripButton4";
+            this.toolStripButton4.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton4.Text = "Предыдущий";
+            this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
+            // 
+            // toolStripButton5
+            // 
+            this.toolStripButton5.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton5.Image = global::mine.Properties.Resources.down;
+            this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton5.Name = "toolStripButton5";
+            this.toolStripButton5.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton5.Text = "Следующий";
+            this.toolStripButton5.Click += new System.EventHandler(this.toolStripButton5_Click);
             // 
             // обновитьToolStripMenuItem
             // 
@@ -212,6 +236,8 @@
         private System.Windows.Forms.ToolStripMenuItem cUOKToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mOOBToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mOSFToolStripMenuItem;
+        private System.Windows.Forms.ToolStripButton toolStripButton4;
+        private System.Windows.Forms.ToolStripButton toolStripButton5;
 
     }
 }

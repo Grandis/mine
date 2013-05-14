@@ -13,6 +13,7 @@ namespace mine
     {
         double[,] data2D;
         string title = "Работа с двумерной графикой";
+        String[] names = { "", "", "", "CUOB", "CUOK", "MOOB", "MOSF" };
         int count;
         int caption = 0;
         
@@ -435,6 +436,34 @@ namespace mine
             caption = 6;
             title = "MOSF";
 
+            Form_mas();
+            Nastroyka();  // Настройка	
+            Max_Min();    // Max-Min
+            Invalidate();
+
+        }
+
+        private void toolStripButton4_Click(object sender, EventArgs e)
+        {
+            if (caption == 0 || caption == 3)
+                caption = 6;
+            else caption--;
+
+            title = names[caption];
+            Form_mas();
+            Nastroyka();  // Настройка	
+            Max_Min();    // Max-Min
+            Invalidate();
+        }
+
+        private void toolStripButton5_Click(object sender, EventArgs e)
+        {
+            if (caption == 0 || caption == 6)
+                caption = 3;
+            else 
+                caption++;
+
+            title = names[caption];
             Form_mas();
             Nastroyka();  // Настройка	
             Max_Min();    // Max-Min
