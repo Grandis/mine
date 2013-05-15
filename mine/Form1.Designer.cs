@@ -43,9 +43,10 @@
             this.MOOB = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MOSF = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.simplexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TwoDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.simplexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.countToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -177,20 +178,13 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.TwoDToolStripMenuItem,
             this.dToolStripMenuItem1,
-            this.simplexToolStripMenuItem});
+            this.simplexToolStripMenuItem,
+            this.countToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(646, 24);
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "menuStrip1";
-            // 
-            // simplexToolStripMenuItem
-            // 
-            this.simplexToolStripMenuItem.Image = global::mine.Properties.Resources.function;
-            this.simplexToolStripMenuItem.Name = "simplexToolStripMenuItem";
-            this.simplexToolStripMenuItem.Size = new System.Drawing.Size(91, 20);
-            this.simplexToolStripMenuItem.Text = "Симплекс";
-            this.simplexToolStripMenuItem.Click += new System.EventHandler(this.simplexToolStripMenuItem_Click);
             // 
             // TwoDToolStripMenuItem
             // 
@@ -207,6 +201,21 @@
             this.dToolStripMenuItem1.Size = new System.Drawing.Size(49, 20);
             this.dToolStripMenuItem1.Text = "3D";
             this.dToolStripMenuItem1.Click += new System.EventHandler(this.dToolStripMenuItem1_Click);
+            // 
+            // simplexToolStripMenuItem
+            // 
+            this.simplexToolStripMenuItem.Image = global::mine.Properties.Resources.function;
+            this.simplexToolStripMenuItem.Name = "simplexToolStripMenuItem";
+            this.simplexToolStripMenuItem.Size = new System.Drawing.Size(91, 20);
+            this.simplexToolStripMenuItem.Text = "Симплекс";
+            this.simplexToolStripMenuItem.Click += new System.EventHandler(this.simplexToolStripMenuItem_Click);
+            // 
+            // countToolStripMenuItem
+            // 
+            this.countToolStripMenuItem.Name = "countToolStripMenuItem";
+            this.countToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
+            this.countToolStripMenuItem.Text = "Расчет";
+            this.countToolStripMenuItem.Click += new System.EventHandler(this.countToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -251,6 +260,7 @@
         private System.Windows.Forms.ToolStripMenuItem TwoDToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem simplexToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem countToolStripMenuItem;
     }
 }
 

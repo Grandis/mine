@@ -140,5 +140,11 @@ namespace mine
             Form simplexFrm = new Simplex();
             simplexFrm.Show();
         }
+
+        private void countToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form countFrm = new Count();
+            countFrm.Show();
+        }
     }
 }
