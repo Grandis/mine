@@ -12,12 +12,12 @@ namespace mine
 {
     public partial class Form1 : Form
     {
+        String connect = "Provider=Microsoft.JET.OLEDB.4.0;data source= ../../mdb/CMMVS.MDB";
         public Form1()
         {
             InitializeComponent();
             dataGridView1.Visible = false;
 
-            String connect = "Provider=Microsoft.JET.OLEDB.4.0;data source= ../../mdb/CMMVS.MDB";
             OleDbConnection con = new OleDbConnection(connect);
             con.Open();
 
@@ -39,7 +39,6 @@ namespace mine
         private void listHorizont_SelectedIndexChanged(object sender, EventArgs e)
         {
             listNbl.Items.Clear();
-            String connect = "Provider=Microsoft.JET.OLEDB.4.0;data source= ../../mdb/CMMVS.MDB";
             OleDbConnection con = new OleDbConnection(connect);
             con.Open();
 
@@ -62,7 +61,6 @@ namespace mine
             dataGridView1.Visible = true;
             dataGridView1.Rows.Clear();
 
-            String connect = "Provider=Microsoft.JET.OLEDB.4.0;data source= ../../mdb/CMMVS.MDB";
             OleDbConnection con = new OleDbConnection(connect);
             con.Open();
 
@@ -86,7 +84,6 @@ namespace mine
 
         private void TwoDToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            String connect = "Provider=Microsoft.JET.OLEDB.4.0;data source= ../../mdb/CMMVS.MDB";
             OleDbConnection con = new OleDbConnection(connect);
             con.Open();
 
@@ -132,7 +129,47 @@ namespace mine
 
         private void dToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            OleDbConnection con = new OleDbConnection(connect);
+            con.Open();
 
+            // Подсчет записей:
+            OleDbCommand dataCount = new OleDbCommand("SELECT CMMVS.NSK FROM CMMVS WHERE CMMVS.NGOR=" + listHorizont.SelectedItem + " AND CMMVS.NBL=" + listNbl.SelectedItem, con);
+            OleDbDataReader dataCountReader = dataCount.ExecuteReader();
+            int count = 0;
+            while (dataCountReader.Read())
+            {
+                count++;
+            }
+            // ----------------
+
+            // Формирование массива данных для импорта на форму графика:
+            OleDbCommand dataQuery = new OleDbCommand("SELECT CMMVS.NSK, CMMVS.X, CMMVS.Y, CMMVS.Z, CMMVS.CUOB, CMMVS.CUOK, CMMVS.MOOB, CMMVS.MOSF FROM CMMVS WHERE CMMVS.NGOR=" + listHorizont.SelectedItem + " AND CMMVS.NBL=" + listNbl.SelectedItem, con);
+            OleDbDataReader dataRead = dataQuery.ExecuteReader();
+
+            double[,] data3D = new double[count, dataRead.FieldCount];
+
+            int i = 0;
+            while (dataRead.Read())
+            {
+                for (int j = 0; j < dataRead.FieldCount; j++)
+                {
+                    if (dataRead[j].ToString() == "" || dataRead[j] == null)
+                    {
+                        data3D[i, j] = 0;
+                    }
+                    else
+                    {
+                        data3D[i, j] = Convert.ToDouble(dataRead[j]);
+                    }
+                }
+                i++;
+            }
+            // ---------------------------------------------------------
+            con.Close();
+
+            Form graf3D = new _3D(data3D, count);
+            graf3D.Show();
+            
         }
 
         private void simplexToolStripMenuItem_Click(object sender, EventArgs e)

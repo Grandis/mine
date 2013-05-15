@@ -52,6 +52,12 @@
     <Compile Include="2D.Designer.cs">
       <DependentUpon>2D.cs</DependentUpon>
     </Compile>
+    <Compile Include="3D.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="3D.Designer.cs">
+      <DependentUpon>3D.cs</DependentUpon>
+    </Compile>
     <Compile Include="Count.cs">
       <SubType>Form</SubType>
     </Compile>

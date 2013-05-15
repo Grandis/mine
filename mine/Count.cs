@@ -121,12 +121,14 @@ namespace mine
                 
             }
 
-            // Формирование массива данных для начальной матрицы:
+            /*
+            //
             OleDbCommand dataQuery = new OleDbCommand("SELECT DATA.ZATR, DATA.PPL1, DATA.PPL2, DATA.Q, DATA.ALPHA1, DATA.ALPHA2 FROM DATA", con);
             OleDbDataReader dataRead = dataQuery.ExecuteReader();
-
             //--------------------------------------------------------------------------------------
-            
+            */
+            con.Close();
+
             // Добавляем в массив единицы базисных переменных
             for (i = 0; i < bounds; i++)
             {
