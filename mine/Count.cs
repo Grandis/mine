@@ -33,9 +33,16 @@ namespace mine
         double[] pPl1;
         double[] pPl2;
         double[] zatr;
+        double[] t;
+        double[] xArray;
+        double sigma = 0;
+        int nGor = 1385; // горизонт
+        int[] nBl; // выбранные блоки
+        double[] AlphaINbl; // средний показатель по каждому блоку
         int[] xRows;
         bool check = true;
         int lap = 0;
+        int i = 0;
 
         String matrix = "";
         double L;
@@ -47,65 +54,105 @@ namespace mine
         {
             OleDbConnection con = new OleDbConnection(connect);
             con.Open();
-            
-            // Подсчет записей:
-            OleDbCommand dataCount = new OleDbCommand("SELECT DATA.ID FROM DATA", con);
-            OleDbDataReader dataCountReader = dataCount.ExecuteReader();
-            int count = 0;
-            while (dataCountReader.Read())
+
+            if (xArray != null)
             {
-                count++;
+                nBl = new int[variables];
+                AlphaINbl = new double[variables];
+                t = new double[variables];
+                OleDbCommand nBlQuery = new OleDbCommand("SELECT DATA.NBL FROM DATA", con);
+                OleDbDataReader nBlReader = nBlQuery.ExecuteReader();
+                i = 0;
+                while (nBlReader.Read())
+                {
+                    nBl[i] = Convert.ToInt32(nBlReader[0]);
+                    i++;
+                }
+
+                for (i = 0; i < variables; i++)
+                {
+                    OleDbCommand oprobCount = new OleDbCommand("SELECT CMMVS.CUOB FROM CMMVS WHERE CMMVS.NGOR="+nGor+" AND CMMVS.NBL=" + nBl[i], con);
+                    OleDbDataReader oprobCountReader = oprobCount.ExecuteReader();
+
+                    double sum = 0.00;
+                    int j = 0;
+                    while (oprobCountReader.Read())
+                    {
+                        if (Convert.ToDouble(oprobCountReader[0]) > 0)
+                        {
+                            sum += Math.Pow((Convert.ToDouble(oprobCountReader[0]) + alpha1[i]), 2);
+                            j++; 
+                        }
+                    }
+                    t[i] = (sum / j) + Math.Pow((alpha1[i] - alphaPl), 2);
+                    sigma += t[i] * xArray[i];
+                }
+                sigma /= xArray.Sum();
+
+                //***********************
+
+
             }
-
-            variables = count;
-            bounds = variables * 4;
-
-            x = bounds + 1;
-            y = x + variables;
-
-            alpha1 = new double[variables];
-            pPl1 = new double[variables];
-            pPl2 = new double[variables];
-            zatr = new double[variables];
-            checkRows = new int[x];
-            xRows = new int[y];
-
-            int i = 0;
-            for (i = 0; i < checkRows.Count(); i++) if (i < 10 || (i > 19 && i < 30) || i > 39) checkRows[i] = 1;
-            // ----------------
-
-            // Задаем АльфаПлановый (нормативный показатель качества):
-            OleDbCommand dataAlphaPl = new OleDbCommand("SELECT STATIC.VAL FROM STATIC WHERE STATIC.ID=5", con);
-            OleDbDataReader dataAlphaPlReader = dataAlphaPl.ExecuteReader();
-
-            dataAlphaPlReader.Read();
-            alphaPl = Convert.ToDouble(dataAlphaPlReader[0]);
-            // ----------------
-
-            // Задаем ДельтаАльфа:
-            OleDbCommand dataDeltaAlpha = new OleDbCommand("SELECT STATIC.VAL FROM STATIC WHERE STATIC.ID=7", con);
-            OleDbDataReader dataDeltaAlphaReader = dataDeltaAlpha.ExecuteReader();
-
-            dataDeltaAlphaReader.Read();
-            deltaAlpha = Convert.ToDouble(dataDeltaAlphaReader[0]);
-            // ----------------
-
-            temporaryMatrix = new double[x + 1, y];
-
-            // Формирование массива данных ALPHA1:
-            OleDbCommand dataAlpha1Query = new OleDbCommand("SELECT DATA.ZATR, DATA.PPL1, DATA.PPL2, DATA.ALPHA1 FROM DATA", con);
-            OleDbDataReader dataAlpha1Reader = dataAlpha1Query.ExecuteReader();
-
-            i = 0;
-            while (dataAlpha1Reader.Read())
+            else
             {
-                zatr[i] = Convert.ToDouble(dataAlpha1Reader[0]);
-                pPl1[i] = Convert.ToDouble(dataAlpha1Reader[1]);
-                pPl2[i] = Convert.ToDouble(dataAlpha1Reader[2]);
-                alpha1[i] = Convert.ToDouble(dataAlpha1Reader[3]);
-                i++;
-            }
+                // Подсчет записей:
+                OleDbCommand dataCount = new OleDbCommand("SELECT DATA.ID FROM DATA", con);
+                OleDbDataReader dataCountReader = dataCount.ExecuteReader();
+                int count = 0;
+                while (dataCountReader.Read())
+                {
+                    count++;
+                }
 
+                variables = count;
+                bounds = variables * 4;
+
+
+                x = bounds + 1;
+                y = x + variables;
+
+                alpha1 = new double[variables];
+                pPl1 = new double[variables];
+                pPl2 = new double[variables];
+                zatr = new double[variables];
+                checkRows = new int[x];
+                xRows = new int[y];
+
+                for (i = 0; i < checkRows.Count(); i++) if (i < 10 || (i > 19 && i < 30) || i > 39) checkRows[i] = 1;
+                // ----------------
+
+                // Задаем АльфаПлановый (нормативный показатель качества):
+                OleDbCommand dataAlphaPl = new OleDbCommand("SELECT STATIC.VAL FROM STATIC WHERE STATIC.ID=5", con);
+                OleDbDataReader dataAlphaPlReader = dataAlphaPl.ExecuteReader();
+
+                dataAlphaPlReader.Read();
+                alphaPl = Convert.ToDouble(dataAlphaPlReader[0]);
+                // ----------------
+
+                // Задаем ДельтаАльфа:
+                OleDbCommand dataDeltaAlpha = new OleDbCommand("SELECT STATIC.VAL FROM STATIC WHERE STATIC.ID=7", con);
+                OleDbDataReader dataDeltaAlphaReader = dataDeltaAlpha.ExecuteReader();
+
+                dataDeltaAlphaReader.Read();
+                deltaAlpha = Convert.ToDouble(dataDeltaAlphaReader[0]);
+                // ----------------
+
+                temporaryMatrix = new double[x + 1, y];
+
+                // Формирование массива данных ALPHA1:
+                OleDbCommand dataAlpha1Query = new OleDbCommand("SELECT DATA.ZATR, DATA.PPL1, DATA.PPL2, DATA.ALPHA1 FROM DATA", con);
+                OleDbDataReader dataAlpha1Reader = dataAlpha1Query.ExecuteReader();
+
+                i = 0;
+                while (dataAlpha1Reader.Read())
+                {
+                    zatr[i] = Convert.ToDouble(dataAlpha1Reader[0]);
+                    pPl1[i] = Convert.ToDouble(dataAlpha1Reader[1]);
+                    pPl2[i] = Convert.ToDouble(dataAlpha1Reader[2]);
+                    alpha1[i] = Convert.ToDouble(dataAlpha1Reader[3]);
+                    i++;
+                }
+            }
 
             // Добавляем в массив коэфициенты переменных ограничений.
             int temp = 0;
@@ -388,17 +435,44 @@ namespace mine
                 // Если да, то задача решена.
                 if (check)
                 {
-                    L = firstMatrix[x - 1, y - 1] * -1;
-                    String xLast = "Переменные: X(";
-                    for (int i = 0; i < variables; i++)
+                    if (xArray == null)
                     {
-                        if (xRows[i] != -1)
-                            xLast += firstMatrix[xRows[i], y - 1].ToString() + ";  ";
-                        else
-                            xLast += "0;  ";
+                        xArray = new double[variables];
+                        for (int i = 0; i < variables; i++)
+                        {
+                            if (xRows[i] != -1)
+                            {
+                                xArray[i] = firstMatrix[xRows[i], y - 1];
+                            }
+                            else
+                            {
+                                xArray[i] = 0;
+                            }
+                        }
+                        temporaryMatrixFilling();
+                        temporaryCount();
+                        simplexCount();
                     }
-                    xLast = xLast.Trim() + ").";
-                    MessageBox.Show("Целевая функция равна " + L.ToString() + ".\n" + xLast);
+                    else
+                    {
+                        L = firstMatrix[x - 1, y - 1] * -1;
+                        String xLast = "Переменные: X(";
+                        for (int i = 0; i < variables; i++)
+                        {
+                            if (xRows[i] != -1)
+                            {
+                                xLast += firstMatrix[xRows[i], y - 1].ToString() + ";  ";
+                                xArray[i] = firstMatrix[xRows[i], y - 1];
+                            }
+                            else
+                            {
+                                xLast += "0;  ";
+                                xArray[i] = 0;
+                            }
+                        }
+                        xLast = xLast.Trim() + ").";
+                        MessageBox.Show("Целевая функция равна " + L.ToString() + ".\n" + xLast);
+                    }
                 }
 
                 // Если нет, то повторяем функцию simplexCount().
