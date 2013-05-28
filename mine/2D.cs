@@ -40,6 +40,7 @@ namespace mine
         Font font_nad;
         Font font_pok;
         StringFormat sf;
+        bool oprobFlag = false;
 
         public _2D(double[,] data2D, int count)
         {
@@ -227,9 +228,19 @@ namespace mine
                 koor_y = (int)((Ymax - Y[i]) / K_e_py + ots_ver1 + ots_ver2);
                 if (caption == 0) buf = string.Format("{0:F0}", Z[i]);
                 else buf = string.Format("{0:F3}", Z[i]);
-                gr.DrawString(buf, font_pok, Brushes.Black,
-                koor_x, koor_y, sf);
-                gr.FillEllipse(new SolidBrush(Color.Red), koor_x - 3, koor_y - 3, 6, 6);
+                if (oprobFlag == true)
+                {
+                    if (Z[i] > 0)
+                    {
+                        gr.DrawString(buf, font_pok, Brushes.Black, koor_x, koor_y, sf);
+                        gr.FillEllipse(new SolidBrush(Color.Red), koor_x - 3, koor_y - 3, 6, 6);
+                    }
+                }
+                else
+                {
+                    gr.DrawString(buf, font_pok, Brushes.Black, koor_x, koor_y, sf);
+                    gr.FillEllipse(new SolidBrush(Color.Red), koor_x - 3, koor_y - 3, 6, 6);
+                }
             }
         }
 
@@ -469,6 +480,34 @@ namespace mine
             Max_Min();    // Max-Min
             Invalidate();
 
+        }
+
+        private void oprobSKToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (oprobFlag == false)
+            {
+                allSKToolStripMenuItem.Checked = false;
+                oprobSKToolStripMenuItem.Checked = true;
+                oprobFlag = true;
+                Form_mas();
+                Nastroyka();  // Настройка	
+                Max_Min();    // Max-Min
+                Invalidate();
+            }
+        }
+
+        private void allSKToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (oprobFlag == true)
+            {
+                oprobSKToolStripMenuItem.Checked = false;
+                allSKToolStripMenuItem.Checked = true;
+                oprobFlag = false;
+                Form_mas();
+                Nastroyka();  // Настройка	
+                Max_Min();    // Max-Min
+                Invalidate();
+            }
         }
     }
 }

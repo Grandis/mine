@@ -44,6 +44,9 @@
             this.обновитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.работаСДвумернойГрафикойToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.колесикоToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.allSKToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.oprobSKToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -53,7 +56,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.подписиToolStripMenuItem,
             this.обновитьToolStripMenuItem,
-            this.режимыToolStripMenuItem});
+            this.режимыToolStripMenuItem,
+            this.viewToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(784, 24);
@@ -196,6 +200,31 @@
             this.колесикоToolStripMenuItem.Text = "Колесико";
             this.колесикоToolStripMenuItem.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
+            // viewToolStripMenuItem
+            // 
+            this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.allSKToolStripMenuItem,
+            this.oprobSKToolStripMenuItem});
+            this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
+            this.viewToolStripMenuItem.Text = "Отображение";
+            // 
+            // allSKToolStripMenuItem
+            // 
+            this.allSKToolStripMenuItem.Checked = true;
+            this.allSKToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.allSKToolStripMenuItem.Name = "allSKToolStripMenuItem";
+            this.allSKToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.allSKToolStripMenuItem.Text = "Все скважины";
+            this.allSKToolStripMenuItem.Click += new System.EventHandler(this.allSKToolStripMenuItem_Click);
+            // 
+            // oprobSKToolStripMenuItem
+            // 
+            this.oprobSKToolStripMenuItem.Name = "oprobSKToolStripMenuItem";
+            this.oprobSKToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.oprobSKToolStripMenuItem.Text = "Только опробованные";
+            this.oprobSKToolStripMenuItem.Click += new System.EventHandler(this.oprobSKToolStripMenuItem_Click);
+            // 
             // _2D
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -238,6 +267,9 @@
         private System.Windows.Forms.ToolStripMenuItem mOSFToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton toolStripButton4;
         private System.Windows.Forms.ToolStripButton toolStripButton5;
+        private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem allSKToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem oprobSKToolStripMenuItem;
 
     }
 }

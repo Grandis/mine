@@ -229,7 +229,7 @@ namespace mine
                 temporaryMatrix[x, j] *= -1;
             temporaryMatrix[x, y - 1] *= -1;
             //-----------------------------------
-
+            /*
             String matrix = "Начальная матрица W\n";
             for (i = 0; i <= x; i++)
             {
@@ -238,7 +238,7 @@ namespace mine
                 matrix += "\n";
             }
             MessageBox.Show(matrix);
-            
+            */
 
         }
         
@@ -324,7 +324,7 @@ namespace mine
                         mainMatrix[i, j] = temporaryMatrix[i, j];
                     }
                 }
-                
+                /*
                 matrix = "";
                 for (int i = 0; i < x; i++)
                 {
@@ -333,6 +333,7 @@ namespace mine
                     matrix += "\n";
                 }
                 MessageBox.Show(matrix);
+                */
                 firstMatrix = mainMatrix;
             }
 
@@ -341,7 +342,7 @@ namespace mine
             {
                 if (lap > bounds * bounds)
                 {
-                    MessageBox.Show("О_о");
+                    //MessageBox.Show("О_о");
                     mainMatrix = new double[x, y];
                     for (int i = 0; i < x; i++)
                     {
@@ -350,7 +351,7 @@ namespace mine
                             mainMatrix[i, j] = temporaryMatrix[i, j];
                         }
                     }
-
+                    /*
                     matrix = "";
                     for (int i = 0; i < x; i++)
                     {
@@ -359,6 +360,7 @@ namespace mine
                         matrix += "\n";
                     }
                     MessageBox.Show(matrix);
+                    */
                     firstMatrix = mainMatrix;
                 }
                 else
@@ -426,7 +428,7 @@ namespace mine
                     }
                 }
 
-                
+                /*
                 String matrix = "";
                 for (int i = 0; i < x; i++)
                 {
@@ -435,7 +437,7 @@ namespace mine
                     matrix += "\n";
                 }
                 MessageBox.Show(matrix);
-                
+                */
 
                 // Проверяем, все ли элементы функции L положительны.
                 check = true;

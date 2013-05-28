@@ -81,6 +81,9 @@
     <EmbeddedResource Include="2D.resx">
       <DependentUpon>2D.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Count.resx">
+      <DependentUpon>Count.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
