@@ -80,7 +80,7 @@ namespace mine
                     {
                         if (Convert.ToDouble(oprobCountReader[0]) > 0)
                         {
-                            sum += Math.Pow((Convert.ToDouble(oprobCountReader[0]) + alpha1[i]), 2);
+                            sum += Math.Pow((Convert.ToDouble(oprobCountReader[0]) - alpha1[i]), 2);
                             j++; 
                         }
                     }
@@ -93,8 +93,6 @@ namespace mine
 
 
             }
-            else
-            {
                 // Подсчет записей:
                 OleDbCommand dataCount = new OleDbCommand("SELECT DATA.ID FROM DATA", con);
                 OleDbDataReader dataCountReader = dataCount.ExecuteReader();
@@ -105,8 +103,14 @@ namespace mine
                 }
 
                 variables = count;
+                if(xArray != null)
+                {
+                    bounds = variables * 4 + 1;
+                }
+                else
+                {
                 bounds = variables * 4;
-
+                }
 
                 x = bounds + 1;
                 y = x + variables;
@@ -118,6 +122,7 @@ namespace mine
                 checkRows = new int[x];
                 xRows = new int[y];
 
+                for (i = 0; i < y; i++) xRows[i] = -1;
                 for (i = 0; i < checkRows.Count(); i++) if (i < 10 || (i > 19 && i < 30) || i > 39) checkRows[i] = 1;
                 // ----------------
 
@@ -152,15 +157,22 @@ namespace mine
                     alpha1[i] = Convert.ToDouble(dataAlpha1Reader[3]);
                     i++;
                 }
-            }
-
+            
             // Добавляем в массив коэфициенты переменных ограничений.
             int temp = 0;
             for (i = 0; i < bounds; i++)
             {
-                if (i < 20) temporaryMatrix[i, temp] = 1;
-                else temporaryMatrix[i, temp] = alpha1[temp];
-                if (checkRows[i] == 1)
+                if (i < 2 * variables) temporaryMatrix[i, temp] = 1;
+                else if(i < 4 * variables) temporaryMatrix[i, temp] = alpha1[temp];
+                else if (i == 4 * variables)
+                {
+                    for (int j = 0; j < variables; j++)
+                    {
+                        temporaryMatrix[i, j] = Math.Abs(sigma - t[j]);
+                        temporaryMatrix[x, j] += temporaryMatrix[i, j];
+                    }
+                }
+                if (i != 4 * variables && checkRows[i] == 1)
                     temporaryMatrix[x, temp] += temporaryMatrix[i, temp];
                 
                 temp++;
@@ -196,6 +208,7 @@ namespace mine
                 else if (i < 2 * variables) temporaryMatrix[i, y - 1] = pPl2[temp];
                 else if (i < 3 * variables) temporaryMatrix[i, y - 1] = (alphaPl - deltaAlpha) * pPl1[temp];
                 else if (i < 4 * variables) temporaryMatrix[i, y - 1] = (alphaPl + deltaAlpha) * pPl2[temp];
+                else if (i == 4 * variables) temporaryMatrix[i, y - 1] = 0;
 
                 if (checkRows[i] == 1) temporaryMatrix[x, y - 1] += temporaryMatrix[i, y - 1];
 
@@ -326,7 +339,7 @@ namespace mine
             // Если нет, то повторяем функцию temporaryCount().
             else
             {
-                if (lap > variables * 2)
+                if (lap > bounds * bounds)
                 {
                     MessageBox.Show("О_о");
                     mainMatrix = new double[x, y];
@@ -413,7 +426,7 @@ namespace mine
                     }
                 }
 
-                /*
+                
                 String matrix = "";
                 for (int i = 0; i < x; i++)
                 {
@@ -422,7 +435,7 @@ namespace mine
                     matrix += "\n";
                 }
                 MessageBox.Show(matrix);
-                */
+                
 
                 // Проверяем, все ли элементы функции L положительны.
                 check = true;
@@ -437,6 +450,7 @@ namespace mine
                 {
                     if (xArray == null)
                     {
+
                         xArray = new double[variables];
                         for (int i = 0; i < variables; i++)
                         {
@@ -449,6 +463,27 @@ namespace mine
                                 xArray[i] = 0;
                             }
                         }
+
+                        L = firstMatrix[x - 1, y - 1] * -1;
+                        String xLast = "Переменные: X(";
+                        for (int i = 0; i < variables; i++)
+                        {
+                            if (xRows[i] != -1)
+                            {
+                                xLast += firstMatrix[xRows[i], y - 1].ToString() + ";  ";
+                                xArray[i] = firstMatrix[xRows[i], y - 1];
+                            }
+                            else
+                            {
+                                xLast += "0;  ";
+                                xArray[i] = 0;
+                            }
+                        }
+                        xLast = xLast.Trim() + ").";
+                        MessageBox.Show("Без сигмы\nЦелевая функция равна " + L.ToString() + ".\n" + xLast);
+
+
+                        
                         temporaryMatrixFilling();
                         temporaryCount();
                         simplexCount();
@@ -478,7 +513,7 @@ namespace mine
                 // Если нет, то повторяем функцию simplexCount().
                 else
                 {
-                    if (lap > variables * 2)
+                    if (lap > bounds * bounds)
                     {
                         MessageBox.Show("Функция не ограничена на множестве допустимых решений.");
                         return;
