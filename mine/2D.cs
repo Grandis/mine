@@ -227,7 +227,7 @@ namespace mine
                 koor_x = (int)((X[i] - Xmin) / K_e_px + ots_lev1 + ots_lev2);
                 koor_y = (int)((Ymax - Y[i]) / K_e_py + ots_ver1 + ots_ver2);
                 if (caption == 0) buf = string.Format("{0:F0}", Z[i]);
-                else buf = string.Format("{0:F3}", Z[i]);
+                else buf = string.Format("{0:F4}", Z[i]);
                 if (oprobFlag == true)
                 {
                     if (Z[i] > 0)
