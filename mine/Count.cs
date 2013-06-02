@@ -482,7 +482,7 @@ namespace mine
                             }
                         }
                         xLast = xLast.Trim() + ").";
-                        MessageBox.Show("Без сигмы\nЦелевая функция равна " + L.ToString() + ".\n" + xLast);
+                        //MessageBox.Show("Без сигмы\nЦелевая функция равна " + L.ToString() + ".\n" + xLast);
 
 
                         
@@ -492,6 +492,8 @@ namespace mine
                     }
                     else
                     {
+                        //Graphics gr = CreateGraphics();
+                        //gr.DrawString("Горизонт" + nGor, new Font("Arial", 5), Brushes.Black, 180, 30);
                         L = firstMatrix[x - 1, y - 1] * -1;
                         String xLast = "Переменные: X(";
                         for (int i = 0; i < variables; i++)

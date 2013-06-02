@@ -47,6 +47,7 @@
             this.dToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.simplexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.countToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -84,7 +85,7 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.listNbl);
-            this.groupBox2.Location = new System.Drawing.Point(132, 27);
+            this.groupBox2.Location = new System.Drawing.Point(138, 27);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(88, 158);
             this.groupBox2.TabIndex = 3;
@@ -217,12 +218,24 @@
             this.countToolStripMenuItem.Text = "Расчет";
             this.countToolStripMenuItem.Click += new System.EventHandler(this.countToolStripMenuItem_Click);
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(240, 162);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(174, 17);
+            this.checkBox1.TabIndex = 6;
+            this.checkBox1.Text = "Выборка по всему горизонту";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(646, 380);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -261,6 +274,7 @@
         private System.Windows.Forms.ToolStripMenuItem dToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem simplexToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem countToolStripMenuItem;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
 

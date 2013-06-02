@@ -42,18 +42,43 @@ namespace mine
             OleDbConnection con = new OleDbConnection(connect);
             con.Open();
 
-            // Заполнение списка номеров блоков
-            OleDbCommand nbl = new OleDbCommand("SELECT CMMVS.NBL FROM CMMVS WHERE CMMVS.NGOR=" +listHorizont.SelectedItem+ " GROUP BY CMMVS.NBL", con);
-            OleDbDataReader nblList = nbl.ExecuteReader();
-
-            while (nblList.Read())
+            if (checkBox1.Checked == true)
             {
-                listNbl.Items.Add(nblList["NBL"]);
-            }
-            // --------------
+                dataGridView1.Visible = true;
+                dataGridView1.Rows.Clear();
 
+                OleDbCommand data = new OleDbCommand("SELECT CMMVS.NSK, CMMVS.X, CMMVS.Y, CMMVS.Z, CMMVS.CUOB, CMMVS.CUOK, CMMVS.MOOB, CMMVS.MOSF FROM CMMVS WHERE CMMVS.NGOR=" + listHorizont.SelectedItem, con);
+                OleDbDataReader dataGrid = data.ExecuteReader();
+
+                int i = 0;
+                int colls = dataGrid.FieldCount;
+                while (dataGrid.Read())
+                {
+                    dataGridView1.Rows.Add();
+                    for (int j = 0; j < colls; j++)
+                    {
+                        dataGridView1.Rows[i].Cells[j].Value = dataGrid[j];
+                    }
+                    i++;
+                }
+
+            }
+            else
+            {
+
+                // Заполнение списка номеров блоков
+                OleDbCommand nbl = new OleDbCommand("SELECT CMMVS.NBL FROM CMMVS WHERE CMMVS.NGOR=" + listHorizont.SelectedItem + " GROUP BY CMMVS.NBL", con);
+                OleDbDataReader nblList = nbl.ExecuteReader();
+            
+                while (nblList.Read())
+                {
+                    listNbl.Items.Add(nblList["NBL"]);
+                }
+                // --------------
+                listNbl.SetSelected(0, true);
+
+            }
             con.Close();
-            listNbl.SetSelected(0, true);
         }
 
         private void listNbl_SelectedIndexChanged(object sender, EventArgs e)
@@ -87,19 +112,40 @@ namespace mine
             OleDbConnection con = new OleDbConnection(connect);
             con.Open();
 
-            // Подсчет записей:
-            OleDbCommand dataCount = new OleDbCommand("SELECT CMMVS.NSK FROM CMMVS WHERE CMMVS.NGOR=" + listHorizont.SelectedItem + " AND CMMVS.NBL=" + listNbl.SelectedItem, con);
-            OleDbDataReader dataCountReader = dataCount.ExecuteReader();
             int count = 0;
-            while (dataCountReader.Read())
-            {
-                count++;
-            }
-            // ----------------
+            OleDbCommand dataQuery;
+            OleDbDataReader dataRead;
 
-            // Формирование массива данных для импорта на форму графика:
-            OleDbCommand dataQuery = new OleDbCommand("SELECT CMMVS.NSK, CMMVS.X, CMMVS.Y, CMMVS.CUOB, CMMVS.CUOK, CMMVS.MOOB, CMMVS.MOSF FROM CMMVS WHERE CMMVS.NGOR=" + listHorizont.SelectedItem + " AND CMMVS.NBL=" + listNbl.SelectedItem, con);
-            OleDbDataReader dataRead = dataQuery.ExecuteReader();
+            if (checkBox1.Checked == true)
+            {
+                // Подсчет записей:
+                OleDbCommand dataCount = new OleDbCommand("SELECT CMMVS.NSK FROM CMMVS WHERE CMMVS.NGOR=" + listHorizont.SelectedItem, con);
+                OleDbDataReader dataCountReader = dataCount.ExecuteReader();
+                while (dataCountReader.Read())
+                {
+                    count++;
+                }
+                // ----------------
+
+                // Формирование массива данных для импорта на форму графика:
+                dataQuery = new OleDbCommand("SELECT CMMVS.NSK, CMMVS.X, CMMVS.Y, CMMVS.CUOB, CMMVS.CUOK, CMMVS.MOOB, CMMVS.MOSF FROM CMMVS WHERE CMMVS.NGOR=" + listHorizont.SelectedItem, con);
+                dataRead = dataQuery.ExecuteReader();
+            }
+            else
+            {
+                // Подсчет записей:
+                OleDbCommand dataCount = new OleDbCommand("SELECT CMMVS.NSK FROM CMMVS WHERE CMMVS.NGOR=" + listHorizont.SelectedItem + " AND CMMVS.NBL=" + listNbl.SelectedItem, con);
+                OleDbDataReader dataCountReader = dataCount.ExecuteReader();
+                while (dataCountReader.Read())
+                {
+                    count++;
+                }
+                // ----------------
+
+                // Формирование массива данных для импорта на форму графика:
+                dataQuery = new OleDbCommand("SELECT CMMVS.NSK, CMMVS.X, CMMVS.Y, CMMVS.CUOB, CMMVS.CUOK, CMMVS.MOOB, CMMVS.MOSF FROM CMMVS WHERE CMMVS.NGOR=" + listHorizont.SelectedItem + " AND CMMVS.NBL=" + listNbl.SelectedItem, con);
+                dataRead = dataQuery.ExecuteReader();
+            }
 
             double[,] data2D = new double[count, dataRead.FieldCount];
 
@@ -132,19 +178,46 @@ namespace mine
             OleDbConnection con = new OleDbConnection(connect);
             con.Open();
 
-            // Подсчет записей:
-            OleDbCommand dataCount = new OleDbCommand("SELECT CMMVS.NSK FROM CMMVS WHERE CMMVS.NGOR=" + listHorizont.SelectedItem + " AND CMMVS.NBL=" + listNbl.SelectedItem, con);
-            OleDbDataReader dataCountReader = dataCount.ExecuteReader();
             int count = 0;
-            while (dataCountReader.Read())
-            {
-                count++;
-            }
-            // ----------------
+            OleDbCommand dataQuery;
+            OleDbDataReader dataRead;
 
-            // Формирование массива данных для импорта на форму графика:
-            OleDbCommand dataQuery = new OleDbCommand("SELECT CMMVS.NSK, CMMVS.X, CMMVS.Y, CMMVS.Z, CMMVS.CUOB, CMMVS.CUOK, CMMVS.MOOB, CMMVS.MOSF FROM CMMVS WHERE CMMVS.NGOR=" + listHorizont.SelectedItem + " AND CMMVS.NBL=" + listNbl.SelectedItem, con);
-            OleDbDataReader dataRead = dataQuery.ExecuteReader();
+            if (checkBox1.Checked == true)
+            {
+                // Подсчет записей:
+                OleDbCommand dataCount = new OleDbCommand("SELECT CMMVS.NSK FROM CMMVS WHERE CMMVS.NGOR=" + listHorizont.SelectedItem, con);
+                OleDbDataReader dataCountReader = dataCount.ExecuteReader();
+
+                while (dataCountReader.Read())
+                {
+                    count++;
+                }
+                // ----------------
+
+                // Формирование массива данных для импорта на форму графика:
+                dataQuery = new OleDbCommand("SELECT CMMVS.NSK, CMMVS.X, CMMVS.Y, CMMVS.Z, CMMVS.CUOB, CMMVS.CUOK, CMMVS.MOOB, CMMVS.MOSF FROM CMMVS WHERE CMMVS.NGOR=" + listHorizont.SelectedItem, con);
+                dataRead = dataQuery.ExecuteReader();
+
+
+            }
+            else
+            {
+                // Подсчет записей:
+                OleDbCommand dataCount = new OleDbCommand("SELECT CMMVS.NSK FROM CMMVS WHERE CMMVS.NGOR=" + listHorizont.SelectedItem + " AND CMMVS.NBL=" + listNbl.SelectedItem, con);
+                OleDbDataReader dataCountReader = dataCount.ExecuteReader();
+
+                while (dataCountReader.Read())
+                {
+                    count++;
+                }
+                // ----------------
+
+                // Формирование массива данных для импорта на форму графика:
+                dataQuery = new OleDbCommand("SELECT CMMVS.NSK, CMMVS.X, CMMVS.Y, CMMVS.Z, CMMVS.CUOB, CMMVS.CUOK, CMMVS.MOOB, CMMVS.MOSF FROM CMMVS WHERE CMMVS.NGOR=" + listHorizont.SelectedItem + " AND CMMVS.NBL=" + listNbl.SelectedItem, con);
+                dataRead = dataQuery.ExecuteReader();
+
+
+            }
 
             double[,] data3D = new double[count, dataRead.FieldCount];
 
@@ -182,6 +255,60 @@ namespace mine
         {
             Form countFrm = new Count();
             countFrm.Show();
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked == true)
+            {
+                groupBox2.Enabled = false;
+
+                listNbl.Items.Clear();
+                OleDbConnection con = new OleDbConnection(connect);
+                con.Open();
+
+                dataGridView1.Visible = true;
+                dataGridView1.Rows.Clear();
+
+                OleDbCommand data = new OleDbCommand("SELECT CMMVS.NSK, CMMVS.X, CMMVS.Y, CMMVS.Z, CMMVS.CUOB, CMMVS.CUOK, CMMVS.MOOB, CMMVS.MOSF FROM CMMVS WHERE CMMVS.NGOR=" + listHorizont.SelectedItem, con);
+                OleDbDataReader dataGrid = data.ExecuteReader();
+
+                int i = 0;
+                int colls = dataGrid.FieldCount;
+                while (dataGrid.Read())
+                {
+                    dataGridView1.Rows.Add();
+                    for (int j = 0; j < colls; j++)
+                    {
+                        dataGridView1.Rows[i].Cells[j].Value = dataGrid[j];
+                    }
+                    i++;
+                }
+
+                con.Close();
+
+            }
+            else
+            {
+                groupBox2.Enabled = true;
+
+                listNbl.Items.Clear();
+                OleDbConnection con = new OleDbConnection(connect);
+                con.Open();
+
+                // Заполнение списка номеров блоков
+                OleDbCommand nbl = new OleDbCommand("SELECT CMMVS.NBL FROM CMMVS WHERE CMMVS.NGOR=" + listHorizont.SelectedItem + " GROUP BY CMMVS.NBL", con);
+                OleDbDataReader nblList = nbl.ExecuteReader();
+
+                while (nblList.Read())
+                {
+                    listNbl.Items.Add(nblList["NBL"]);
+                }
+                // --------------
+                listNbl.SetSelected(0, true);
+
+                con.Close();
+            }
         }
     }
 }
