@@ -45,6 +45,7 @@ namespace mine
         int i = 0;
 
         String matrix = "";
+        StringFormat sf = new StringFormat();
         double L;
 
         int x; 
@@ -492,8 +493,6 @@ namespace mine
                     }
                     else
                     {
-                        //Graphics gr = CreateGraphics();
-                        //gr.DrawString("Горизонт" + nGor, new Font("Arial", 5), Brushes.Black, 180, 30);
                         L = firstMatrix[x - 1, y - 1] * -1;
                         String xLast = "Переменные: X(";
                         for (int i = 0; i < variables; i++)
@@ -510,7 +509,7 @@ namespace mine
                             }
                         }
                         xLast = xLast.Trim() + ").";
-                        MessageBox.Show("Целевая функция равна " + L.ToString() + ".\n" + xLast);
+                        //MessageBox.Show("Целевая функция равна " + L.ToString() + ".\n" + xLast);
                     }
                 }
 
@@ -534,6 +533,75 @@ namespace mine
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void Count_Paint(object sender, PaintEventArgs e)
+        {
+            sf.Alignment = sf.LineAlignment = StringAlignment.Center;
+            Graphics gr = e.Graphics;
+            gr.DrawString("Горизонт " + nGor, new Font("Arial", 14), Brushes.Black, ClientSize.Width / 2, menuStrip1.Height * 2, sf);
+            gr.DrawString("Итоговые затраты составляют:   " + L + " грн.", new Font("Arial", 14), Brushes.Black, ClientSize.Width / 2, menuStrip1.Height * 2 + 30, sf);
+
+            float j = menuStrip1.Height * 2F + 60F;
+            for (int i = 0; i < variables; i++)
+            {
+                gr.DrawString("Добыча руды на блоке №" + nBl[i] + ":   " + xArray[i] + " т.", new Font("Arial", 14), Brushes.DarkGray, 230, j);
+                j += 25;
+            }
+
+            gr.DrawString("Всего добыто:   " + xArray.Sum() + " т.", new Font("Arial", 14), Brushes.Black, ClientSize.Width / 2, j + 30, sf);
+
+        }
+
+        private void исходныеДанныеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            groupBox1.Visible = true;
+            groupBox2.Visible = true;
+
+            OleDbConnection con = new OleDbConnection(connect);
+            con.Open();
+
+            staticDataGridView.Rows.Clear();
+            dataGridView1.Rows.Clear();
+
+            OleDbCommand staticQuery = new OleDbCommand("SELECT STATIC.NAIM, STATIC.INFO, STATIC.VAL FROM STATIC", con);
+            OleDbDataReader staticGrid = staticQuery.ExecuteReader();
+            OleDbCommand data = new OleDbCommand("SELECT DATA.NGOR, DATA.NBL, DATA.ZATR, DATA.PPL1, DATA.PPL2, DATA.Q, DATA.ALPHA1 FROM DATA", con);
+            OleDbDataReader dataGrid = data.ExecuteReader();
+
+            int i = 0;
+            int colls = staticGrid.FieldCount;
+            while (staticGrid.Read())
+            {
+                staticDataGridView.Rows.Add();
+                for (int j = 0; j < colls; j++)
+                {
+                    staticDataGridView.Rows[i].Cells[j].Value = staticGrid[j];
+                }
+                i++;
+            }
+
+            i = 0;
+            colls = dataGrid.FieldCount;
+            while (dataGrid.Read())
+            {
+                dataGridView1.Rows.Add();
+                for (int j = 0; j < colls; j++)
+                {
+                    dataGridView1.Rows[i].Cells[j].Value = dataGrid[j];
+                }
+                i++;
+            }
+
+            con.Close();
+
+        }
+
+        private void результатыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            groupBox1.Visible = false;
+            groupBox2.Visible = false;
+
         }
 
     }
