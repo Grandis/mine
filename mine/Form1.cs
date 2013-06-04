@@ -310,5 +310,10 @@ namespace mine
                 con.Close();
             }
         }
+
+        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Help.ShowHelp(this, "help.chm");
+        }
     }
 }

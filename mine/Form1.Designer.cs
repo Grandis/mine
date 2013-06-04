@@ -43,12 +43,12 @@
             this.MOOB = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MOSF = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.countToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.TwoDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.simplexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.countToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -189,25 +189,6 @@
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // countToolStripMenuItem
-            // 
-            this.countToolStripMenuItem.Image = global::mine.Properties.Resources.calculate;
-            this.countToolStripMenuItem.Name = "countToolStripMenuItem";
-            this.countToolStripMenuItem.Size = new System.Drawing.Size(72, 20);
-            this.countToolStripMenuItem.Text = "Расчет";
-            this.countToolStripMenuItem.Click += new System.EventHandler(this.countToolStripMenuItem_Click);
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(240, 162);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(174, 17);
-            this.checkBox1.TabIndex = 6;
-            this.checkBox1.Text = "Выборка по всему горизонту";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
-            // 
             // TwoDToolStripMenuItem
             // 
             this.TwoDToolStripMenuItem.Image = global::mine.Properties.Resources._2d;
@@ -232,12 +213,32 @@
             this.simplexToolStripMenuItem.Text = "Симплекс";
             this.simplexToolStripMenuItem.Click += new System.EventHandler(this.simplexToolStripMenuItem_Click);
             // 
+            // countToolStripMenuItem
+            // 
+            this.countToolStripMenuItem.Image = global::mine.Properties.Resources.calculate;
+            this.countToolStripMenuItem.Name = "countToolStripMenuItem";
+            this.countToolStripMenuItem.Size = new System.Drawing.Size(72, 20);
+            this.countToolStripMenuItem.Text = "Расчет";
+            this.countToolStripMenuItem.Click += new System.EventHandler(this.countToolStripMenuItem_Click);
+            // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.Image = global::mine.Properties.Resources.help;
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(81, 20);
             this.helpToolStripMenuItem.Text = "Справка";
+            this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(240, 162);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(174, 17);
+            this.checkBox1.TabIndex = 6;
+            this.checkBox1.Text = "Выборка по всему горизонту";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // Form1
             // 
