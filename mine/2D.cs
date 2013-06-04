@@ -12,8 +12,8 @@ namespace mine
     public partial class _2D : Form
     {
         double[,] data2D;
-        string title = "Работа с двумерной графикой";
-        String[] names = { "", "", "", "CUOB", "CUOK", "MOOB", "MOSF" };
+        string title = "Номер скважины";
+        String[] names = { "Номер скважины", "", "", "Отметка Z", "CUOB", "CUOK", "MOOB", "MOSF" };
         int count;
         int caption = 0;
         
@@ -227,7 +227,7 @@ namespace mine
                 koor_x = (int)((X[i] - Xmin) / K_e_px + ots_lev1 + ots_lev2);
                 koor_y = (int)((Ymax - Y[i]) / K_e_py + ots_ver1 + ots_ver2);
                 if (caption == 0) buf = string.Format("{0:F0}", Z[i]);
-                else buf = string.Format("{0:F4}", Z[i]);
+                else buf = string.Format("{0:F3}", Z[i]);
                 if (oprobFlag == true)
                 {
                     if (Z[i] > 0)
@@ -379,7 +379,7 @@ namespace mine
         private void обновитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             caption = 0;
-            title = "Работа с двумерной графикой";
+            title = "Номер скважины";
 
             Form_mas();
             Nastroyka();  // Настройка	
@@ -409,7 +409,7 @@ namespace mine
 
         private void cUOBToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            caption = 3;
+            caption = 4;
             title = "CUOB";
 
             Form_mas();
@@ -420,7 +420,7 @@ namespace mine
 
         private void cUOKToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            caption = 4;
+            caption = 5;
             title = "CUOK";
 
             Form_mas();
@@ -432,7 +432,7 @@ namespace mine
 
         private void mOOBToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            caption = 5;
+            caption = 6;
             title = "MOOB";
 
             Form_mas();
@@ -444,8 +444,32 @@ namespace mine
 
         private void mOSFToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            caption = 6;
+            caption = 7;
             title = "MOSF";
+
+            Form_mas();
+            Nastroyka();  // Настройка	
+            Max_Min();    // Max-Min
+            Invalidate();
+
+        }
+
+        private void отметкаZToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            caption = 3;
+            title = "Отметка Z";
+
+            Form_mas();
+            Nastroyka();  // Настройка	
+            Max_Min();    // Max-Min
+            Invalidate();
+
+        }
+
+        private void номерСкважиныToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            caption = 0;
+            title = "Номер скважины";
 
             Form_mas();
             Nastroyka();  // Настройка	
@@ -457,7 +481,7 @@ namespace mine
         private void toolStripButton4_Click(object sender, EventArgs e)
         {
             if (caption == 0 || caption == 3)
-                caption = 6;
+                caption = 7;
             else caption--;
 
             title = names[caption];
@@ -469,7 +493,7 @@ namespace mine
 
         private void toolStripButton5_Click(object sender, EventArgs e)
         {
-            if (caption == 0 || caption == 6)
+            if (caption == 0 || caption == 7)
                 caption = 3;
             else 
                 caption++;
@@ -509,5 +533,6 @@ namespace mine
                 Invalidate();
             }
         }
+
     }
 }
