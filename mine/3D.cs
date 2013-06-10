@@ -153,7 +153,7 @@ namespace mine
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
             kod_figure--;
-            if (kod_figure < 5) kod_figure = 3;
+            if (kod_figure < 1) kod_figure = 5;
             simpleOpenGlControl1.Invalidate(false);
         }
 
